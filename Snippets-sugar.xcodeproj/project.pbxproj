@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0D429B11CA9C5600C76FDE /* OCSnippetsAppPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0D429911CA9C5600C76FDE /* OCSnippetsAppPreferences.xib */; };
+		7A0D42A411CAADE700C76FDE /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0D42A211CAADE700C76FDE /* Defaults.plist */; };
+		7A0D42C111CACEF600C76FDE /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D42C011CACEF600C76FDE /* RegexKitLite.m */; };
 		7A3F995211C844B50038BD0C /* TextActions in Copy XML Files */ = {isa = PBXBuildFile; fileRef = 7A3F994E11C8447D0038BD0C /* TextActions */; };
 		7A3F995E11C845C60038BD0C /* SASnippetsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F995D11C845C60038BD0C /* SASnippetsBridge.m */; };
 		7A3F996111C845E30038BD0C /* OCSnippetsAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F996011C845E30038BD0C /* OCSnippetsAppConnector.m */; };
@@ -34,6 +37,10 @@
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF630370AF2F00C91783 /* Snippets-sugar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Snippets-sugar_Prefix.pch"; path = "Code/Snippets-sugar_Prefix.pch"; sourceTree = "<group>"; };
+		7A0D429A11CA9C5600C76FDE /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/OCSnippetsAppPreferences.xib; sourceTree = "<group>"; };
+		7A0D42A311CAADE700C76FDE /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Defaults.plist; sourceTree = "<group>"; };
+		7A0D42BF11CACEF600C76FDE /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = Code/RegexKitLite.h; sourceTree = "<group>"; };
+		7A0D42C011CACEF600C76FDE /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = Code/RegexKitLite.m; sourceTree = "<group>"; };
 		7A3F994E11C8447D0038BD0C /* TextActions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TextActions; sourceTree = "<group>"; };
 		7A3F995C11C845C60038BD0C /* SASnippetsBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SASnippetsBridge.h; path = Code/SASnippetsBridge.h; sourceTree = "<group>"; };
 		7A3F995D11C845C60038BD0C /* SASnippetsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SASnippetsBridge.m; path = Code/SASnippetsBridge.m; sourceTree = "<group>"; };
@@ -81,6 +88,8 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7A0D42A211CAADE700C76FDE /* Defaults.plist */,
+				7A0D429911CA9C5600C76FDE /* OCSnippetsAppPreferences.xib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 			);
@@ -90,6 +99,8 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7A0D42BF11CACEF600C76FDE /* RegexKitLite.h */,
+				7A0D42C011CACEF600C76FDE /* RegexKitLite.m */,
 				7A3F995C11C845C60038BD0C /* SASnippetsBridge.h */,
 				7A3F995D11C845C60038BD0C /* SASnippetsBridge.m */,
 				7A3F995F11C845E30038BD0C /* OCSnippetsAppConnector.h */,
@@ -185,6 +196,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
+				7A0D429B11CA9C5600C76FDE /* OCSnippetsAppPreferences.xib in Resources */,
+				7A0D42A411CAADE700C76FDE /* Defaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +210,7 @@
 			files = (
 				7A3F995E11C845C60038BD0C /* SASnippetsBridge.m in Sources */,
 				7A3F996111C845E30038BD0C /* OCSnippetsAppConnector.m in Sources */,
+				7A0D42C111CACEF600C76FDE /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +223,22 @@
 				089C167EFE841241C02AAC07 /* English */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7A0D429911CA9C5600C76FDE /* OCSnippetsAppPreferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A0D429A11CA9C5600C76FDE /* English */,
+			);
+			name = OCSnippetsAppPreferences.xib;
+			sourceTree = "<group>";
+		};
+		7A0D42A211CAADE700C76FDE /* Defaults.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A0D42A311CAADE700C76FDE /* English */,
+			);
+			name = Defaults.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -261,6 +291,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(APPLICATION_PATH)/Contents/Headers";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-licucore";
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
 			};
@@ -277,6 +308,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(APPLICATION_PATH)/Contents/Headers";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-licucore";
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
 			};

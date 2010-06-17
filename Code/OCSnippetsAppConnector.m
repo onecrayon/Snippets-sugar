@@ -8,8 +8,20 @@
 
 #import "OCSnippetsAppConnector.h"
 #import "SASnippetsBridge.h"
+#import "RegexKitLite.h"
 #import <EspressoTextActions.h>
 #import <EspressoTextCore.h>
+
+// Makes sure we only set preference defaults once
+static BOOL OCSnippetsAppPrefDefaultsConfigured = NO;
+
+// Logical enums for checking preference values
+typedef enum {
+    kOCSnippetsPlaceholderAutodetect = 0,
+    kOCSnippetsPlaceholderNamed = 1,
+	kOCSnippetsPlaceholderNumeric = 2,
+	kOCSnippetsPlaceholderNone = 3
+} OCSnippetsPlaceholderStyle;
 
 @implementation OCSnippetsAppConnector
 
@@ -20,6 +32,15 @@
 	self = [super init];
 	if (self == nil)
 		return nil;
+	
+	if (!OCSnippetsAppPrefDefaultsConfigured) {
+		// Setup the default preferences, in case they've never been modified
+		NSString *defaults = [[NSBundle bundleWithIdentifier:@"com.onecrayon.sugar.snippetsapp"] pathForResource:@"Defaults" ofType:@"plist"];
+		if (defaults != nil) {
+			[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithContentsOfFile:defaults]];
+		}
+		OCSnippetsAppPrefDefaultsConfigured = YES;
+	}
 	
 	return self;
 }
@@ -42,8 +63,11 @@
 	// Save our context
 	[self setActionContext:context];
 	
-	// TEMP: set this in a preference screen
-	SASnippetsMode mode = kSASnippetsModeGlobalMenu;
+	// Fetch the preferred method for inserting snippets
+	SASnippetsMode mode = kSASnippetsModeSearchPanel;
+	if ([[NSUserDefaults standardUserDefaults] integerForKey:@"SnippetsAppInsertMode"] == 1) {
+		mode = kSASnippetsModeGlobalMenu;
+	}
 	
 	// These Bridge APIs will open the Search Panel or the Global Menu if Snippets is running
 	[bridge selectSnippetUsingMode:mode handler:^(NSDictionary *selectedSnippet)
@@ -65,8 +89,53 @@
 
 - (void)snippetInsertCallback:(NSString *)snippet
 {
-	// TODO: Add some logic to convert named Snippets placeholders into tab stops?
-	[[self actionContext] insertTextSnippet:[CETextSnippet snippetWithString:snippet]];
+	// Check to see what placeholders the user prefers
+	/* Options:
+	     0: Autodetect
+	     1: Snippets.app
+	     2: Espresso/Textmate
+	     3: Plain text
+	 */
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	OCSnippetsPlaceholderStyle placeholders = [defaults integerForKey:@"SnippetsAppPlaceholderStyle"];
+	// If we need to autodetect, do so
+	if (placeholders == kOCSnippetsPlaceholderAutodetect) {
+		if ([snippet isMatchedByRegex:@"(?s)^.*?\\$\\{(\\{?)[a-zA-Z][a-zA-Z0-9_ -]*:.*?\\}\\1.*$"]) {
+			// We found a Snippets-style placeholder, so use Named
+			placeholders = kOCSnippetsPlaceholderNamed;
+		} else if ([snippet	isMatchedByRegex:@"(?s)^.*?(\\$[0-9]|\\$\\{[0-9]+:.+?\\}).*$"]) {
+			// We found a numeric placeholder, so use Numeric
+			placeholders = kOCSnippetsPlaceholderNumeric;
+		} else {
+			// No placeholders, so assume it's plain text (safest that way; don't lose PHP variables and so forth)
+			placeholders = kOCSnippetsPlaceholderNone;
+		}
+	}
+	
+	// Because named placeholders only use tab stops, we need to escape everything
+	// And of course plain text needs escaping no matter what
+	if (placeholders == kOCSnippetsPlaceholderNamed) {
+		snippet = [snippet stringByReplacingOccurrencesOfRegex:@"(\\$|\\{|\\}|`)" withString:@"\\\\$1"];
+	}
+	
+	// TODO: convert named placeholders into numeric tab stops
+	
+	// Run the actual insertion/replacement
+	if (placeholders == kOCSnippetsPlaceholderNone) {
+		NSLog(@"PLAIN TEXT INSERTION");
+		// Get our first selection
+		NSRange selection = [[[[self actionContext] selectedRanges] objectAtIndex:0] rangeValue];
+		CETextRecipe *recipe = [CETextRecipe textRecipe];
+		[recipe addReplacementString:snippet forRange:selection];
+		// Only apply the recipe if it's going to result in a change
+		[recipe prepare];
+		if ([recipe numberOfChanges] > 0) {
+			[[self actionContext] applyTextRecipe:recipe];
+		}
+	} else {
+		NSLog(@"INSERTING: %@", snippet);
+		[[self actionContext] insertTextSnippet:[CETextSnippet snippetWithString:snippet]];
+	}
 }
 
 - (void)dealloc

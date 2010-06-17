@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.onecrayon.sugar.snippets</string>
+	<string>com.onecrayon.sugar.snippetsapp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -20,5 +20,7 @@
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
 	<string>OCSnippetsAppConnector</string>
+	<key>PluginPreferencesNibName</key>
+	<string>OCSnippetsAppPreferences</string>
 </dict>
 </plist>
