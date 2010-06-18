@@ -112,9 +112,8 @@ typedef enum {
 		}
 	}
 	
-	// Because named placeholders only use tab stops, we need to escape everything
-	// And of course plain text needs escaping no matter what
 	if (placeholders == kOCSnippetsPlaceholderNamed) {
+		// Because named placeholders only use tab stops, we need to escape everything
 		snippet = [snippet stringByReplacingOccurrencesOfRegex:@"(\\$|\\{|\\}|`)" withString:@"\\\\$1"];
 		
 		// Convert named placeholders into numeric tab stops
