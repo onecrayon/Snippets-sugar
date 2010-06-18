@@ -100,7 +100,7 @@ typedef enum {
 	OCSnippetsPlaceholderStyle placeholders = [defaults integerForKey:@"SnippetsAppPlaceholderStyle"];
 	// If we need to autodetect, do so
 	if (placeholders == kOCSnippetsPlaceholderAutodetect) {
-		if ([snippet isMatchedByRegex:@"(?s)^.*?\\$\\{(\\{?)[a-zA-Z][a-zA-Z0-9_ -]*:.*?\\}\\1.*$"]) {
+		if ([snippet isMatchedByRegex:@"(?s)^.*?\\$\\{\\{?[a-zA-Z][a-zA-Z0-9_ -]*:.*?\\}?\\}.*$"]) {
 			// We found a Snippets-style placeholder, so use Named
 			placeholders = kOCSnippetsPlaceholderNamed;
 		} else if ([snippet	isMatchedByRegex:@"(?s)^.*?(\\$[0-9]|\\$\\{[0-9]+:.+?\\}).*$"]) {
@@ -116,13 +116,29 @@ typedef enum {
 	// And of course plain text needs escaping no matter what
 	if (placeholders == kOCSnippetsPlaceholderNamed) {
 		snippet = [snippet stringByReplacingOccurrencesOfRegex:@"(\\$|\\{|\\}|`)" withString:@"\\\\$1"];
+		
+		// Convert named placeholders into numeric tab stops
+		// First grab the captures so we can pare down to the actual tab stops
+		NSArray *captureGroups = [snippet arrayOfCaptureComponentsMatchedByRegex:@"\\\\\\$\\\\\\{(?:\\\\\\{)?([a-zA-Z0-9_ -]+)(:.*?)?(?:\\\\\\})?\\\\\\}"];
+		NSMutableArray *namedPlaceholders = [NSMutableArray arrayWithCapacity:[captureGroups count]];
+		for (NSArray *captureGroup in captureGroups) {
+			NSString *placeholderName = [captureGroup objectAtIndex:1];
+			if (![namedPlaceholders containsObject:placeholderName]) {
+				[namedPlaceholders addObject:placeholderName];
+			}
+		}
+		// We now have a list of every unique placeholder name; loop over them and do our replacements
+		NSUInteger stopNumber = 1;
+		for (NSString *namedPlaceholder in namedPlaceholders) {
+			// Replace all occurrences
+			snippet = [snippet stringByReplacingOccurrencesOfRegex:[NSString stringWithFormat:@"\\\\\\$\\\\\\{(?:\\\\\\{)?%@(:.*?)?(?:\\\\\\})?\\\\\\}", namedPlaceholder] withString:[NSString stringWithFormat:@"${%lu$1}", (unsigned long)stopNumber]];
+			stopNumber++;
+		}
 	}
-	
-	// TODO: convert named placeholders into numeric tab stops
 	
 	// Run the actual insertion/replacement
 	if (placeholders == kOCSnippetsPlaceholderNone) {
-		NSLog(@"PLAIN TEXT INSERTION");
+		NSLog(@"Snippets.sugar: PLAIN TEXT");
 		// Get our first selection
 		NSRange selection = [[[[self actionContext] selectedRanges] objectAtIndex:0] rangeValue];
 		CETextRecipe *recipe = [CETextRecipe textRecipe];
@@ -133,7 +149,7 @@ typedef enum {
 			[[self actionContext] applyTextRecipe:recipe];
 		}
 	} else {
-		NSLog(@"INSERTING: %@", snippet);
+		NSLog(@"Snippets.sugar: SNIPPET: %@", snippet);
 		[[self actionContext] insertTextSnippet:[CETextSnippet snippetWithString:snippet]];
 	}
 }

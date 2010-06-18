@@ -1,9 +1,16 @@
 <?xml version="1.0"?>
 <action-recipes>
 	
-	<action id="com.onecrayon.sugar.SnippetsApp.Insert" category="stuff">
+	<action id="com.onecrayon.sugar.SnippetsApp.Insert" category="sugar.snippets-app/1">
 		<class>OCSnippetsAppConnector</class>
 		<title>Insert Snippet</title>
+		<key-equivalent>control s</key-equivalent>
+	</action>
+	
+	<action id="com.onecrayon.sugar.SnippetsApp.NewSnippet" category="sugar.snippets-app/2">
+		<class>OCSnippetsAppNewSnippet</class>
+		<title>New Snippet</title>
+		<key-equivalent>control shift S</key-equivalent>
 	</action>
 	
 </action-recipes>

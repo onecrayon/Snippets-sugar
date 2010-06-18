@@ -6,8 +6,6 @@
 	<integer>0</integer>
 	<key>SnippetsAppPlaceholderStyle</key>
 	<integer>0</integer>
-	<key>SnippetsAppConvertTMVariables</key>
-	<true/>
 	<key>SnippetsAppDefaultAuthor</key>
 	<string></string>
 	<key>SnippetsAppDefaultLicense</key>

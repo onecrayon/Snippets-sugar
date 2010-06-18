@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<action-categories>
+	<category id="sugar.snippets-app" show="sub">
+		<title>Snippets.app</title>
+	</category>
+</action-categories>
