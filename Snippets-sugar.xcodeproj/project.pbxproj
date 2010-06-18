@@ -13,6 +13,8 @@
 		7A3F995211C844B50038BD0C /* TextActions in Copy XML Files */ = {isa = PBXBuildFile; fileRef = 7A3F994E11C8447D0038BD0C /* TextActions */; };
 		7A3F995E11C845C60038BD0C /* SASnippetsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F995D11C845C60038BD0C /* SASnippetsBridge.m */; };
 		7A3F996111C845E30038BD0C /* OCSnippetsAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F996011C845E30038BD0C /* OCSnippetsAppConnector.m */; };
+		7A54983711CBFF6600613C43 /* OCSnippetsAppNewSnippet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A54983611CBFF6600613C43 /* OCSnippetsAppNewSnippet.m */; };
+		7A54983A11CBFFE800613C43 /* OCSnippetsAppBaseAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A54983911CBFFE800613C43 /* OCSnippetsAppBaseAction.m */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,10 @@
 		7A3F995D11C845C60038BD0C /* SASnippetsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SASnippetsBridge.m; path = Code/SASnippetsBridge.m; sourceTree = "<group>"; };
 		7A3F995F11C845E30038BD0C /* OCSnippetsAppConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCSnippetsAppConnector.h; path = Code/OCSnippetsAppConnector.h; sourceTree = "<group>"; };
 		7A3F996011C845E30038BD0C /* OCSnippetsAppConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCSnippetsAppConnector.m; path = Code/OCSnippetsAppConnector.m; sourceTree = "<group>"; };
+		7A54983511CBFF6600613C43 /* OCSnippetsAppNewSnippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCSnippetsAppNewSnippet.h; path = Code/OCSnippetsAppNewSnippet.h; sourceTree = "<group>"; };
+		7A54983611CBFF6600613C43 /* OCSnippetsAppNewSnippet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCSnippetsAppNewSnippet.m; path = Code/OCSnippetsAppNewSnippet.m; sourceTree = "<group>"; };
+		7A54983811CBFFE800613C43 /* OCSnippetsAppBaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCSnippetsAppBaseAction.h; path = Code/OCSnippetsAppBaseAction.h; sourceTree = "<group>"; };
+		7A54983911CBFFE800613C43 /* OCSnippetsAppBaseAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCSnippetsAppBaseAction.m; path = Code/OCSnippetsAppBaseAction.m; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* Snippets.sugar */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Snippets.sugar; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -99,6 +105,10 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7A54983811CBFFE800613C43 /* OCSnippetsAppBaseAction.h */,
+				7A54983911CBFFE800613C43 /* OCSnippetsAppBaseAction.m */,
+				7A54983511CBFF6600613C43 /* OCSnippetsAppNewSnippet.h */,
+				7A54983611CBFF6600613C43 /* OCSnippetsAppNewSnippet.m */,
 				7A0D42BF11CACEF600C76FDE /* RegexKitLite.h */,
 				7A0D42C011CACEF600C76FDE /* RegexKitLite.m */,
 				7A3F995C11C845C60038BD0C /* SASnippetsBridge.h */,
@@ -211,6 +221,8 @@
 				7A3F995E11C845C60038BD0C /* SASnippetsBridge.m in Sources */,
 				7A3F996111C845E30038BD0C /* OCSnippetsAppConnector.m in Sources */,
 				7A0D42C111CACEF600C76FDE /* RegexKitLite.m in Sources */,
+				7A54983711CBFF6600613C43 /* OCSnippetsAppNewSnippet.m in Sources */,
+				7A54983A11CBFFE800613C43 /* OCSnippetsAppBaseAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

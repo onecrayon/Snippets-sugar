@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OCSnippetsAppBaseAction.h"
 
 
-@interface OCSnippetsAppConnector : NSObject {
+@interface OCSnippetsAppConnector : OCSnippetsAppBaseAction {
 	id actionContext;
 }
 

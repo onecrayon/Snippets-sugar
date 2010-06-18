@@ -12,9 +12,6 @@
 #import <EspressoTextActions.h>
 #import <EspressoTextCore.h>
 
-// Makes sure we only set preference defaults once
-static BOOL OCSnippetsAppPrefDefaultsConfigured = NO;
-
 // Logical enums for checking preference values
 typedef enum {
     kOCSnippetsPlaceholderAutodetect = 0,
@@ -32,15 +29,6 @@ typedef enum {
 	self = [super init];
 	if (self == nil)
 		return nil;
-	
-	if (!OCSnippetsAppPrefDefaultsConfigured) {
-		// Setup the default preferences, in case they've never been modified
-		NSString *defaults = [[NSBundle bundleWithIdentifier:@"com.onecrayon.sugar.snippetsapp"] pathForResource:@"Defaults" ofType:@"plist"];
-		if (defaults != nil) {
-			[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithContentsOfFile:defaults]];
-		}
-		OCSnippetsAppPrefDefaultsConfigured = YES;
-	}
 	
 	return self;
 }
