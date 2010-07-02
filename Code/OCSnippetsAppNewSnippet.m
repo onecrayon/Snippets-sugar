@@ -9,8 +9,9 @@
 #import "OCSnippetsAppNewSnippet.h"
 #import <EspressoTextActions.h>
 #import <EspressoTextCore.h>
+#import <EspressoSyntaxCore.h>
 
-// Logical enum for checking preference values
+// Enum for checking preference values
 typedef enum {
     kOCSnippetsLicenseNone = 0,
     kOCSnippetsLicenseApache2 = 1,
@@ -51,12 +52,12 @@ typedef enum {
 	
 	// Add the author, if one exists
 	if (![author isEqualToString:@""]) {
-		[url appendFormat:@"&author=%@", [author stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+		[url appendFormat:@"&amp;author=%@", [author stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 	}
 	
 	// Add the license, if one exists
 	if (license != kOCSnippetsLicenseNone) {
-		[url appendString:@"&license="];
+		[url appendString:@"&amp;license="];
 		if (license == kOCSnippetsLicenseApache2) {
 			[url appendString:@"apache2"];
 		} else if (license == kOCSnippetsLicenseBSD) {
@@ -72,7 +73,29 @@ typedef enum {
 		}
 	}
 	
-	// TODO: figure out the highlighting of the file
+	// Figure out the highlighting of the file (currently only detecting built-in Sugars
+	// TODO: Improve the intelligence of this? String matching is a TERRIBLE way to do it; much better to do actual selector comparisons
+	SXTypeIdentifier *rootZoneIdentifier = [[[context syntaxTree] rootZone] typeIdentifier];
+	if (rootZoneIdentifier) {
+		// Assume that we'll have something; if not, a blank value isn't going to hurt anyone
+		[url appendString:@"&amp;highlight="];
+		NSString *rootZone = [rootZoneIdentifier stringValue];
+		if ([rootZone isEqualToString:@"sourcecode.js"]) {
+			[url appendString:@"javascript"];
+		} else if ([rootZone isEqualToString:@"styling.css"]) {
+			[url appendString:@"css"];
+		} else if ([rootZone isEqualToString:@"text.html.basic"]) {
+			[url appendString:@"html"];
+		} else if ([rootZone isEqualToString:@"text.xml"]) {
+			[url appendString:@"xml"];
+		} else if ([rootZone isEqualToString:@"text.xml.xsl"]) {
+			[url appendString:@"xslt"];
+		} else if ([rootZone isEqualToString:@"source.php.html"]) {
+			[url appendString:@"php"];
+		}
+	}
+	
+	//NSLog(@"URL: %@", url);
 	
 	return [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
 }
@@ -83,3 +106,4 @@ typedef enum {
 }
 
 @end
+ 

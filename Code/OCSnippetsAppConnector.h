@@ -6,6 +6,10 @@
 //  Copyright 2010 One Crayon. All rights reserved.
 //
 
+/*
+ This class handles sending the user to Snippets to select a snippet, and then parsing and inserting it into Espresso
+*/
+
 #import <Cocoa/Cocoa.h>
 #import "OCSnippetsAppBaseAction.h"
 

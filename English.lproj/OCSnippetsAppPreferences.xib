@@ -172,7 +172,7 @@
 					<object class="NSTextField" id="785644818">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{17, 20}, {55, 17}}</string>
+						<string key="NSFrame">{{103, 22}, {55, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="473710632">
@@ -258,7 +258,7 @@
 					<object class="NSTextField" id="946477093">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{17, 50}, {151, 17}}</string>
+						<string key="NSFrame">{{58, 50}, {100, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="317235767">
@@ -415,7 +415,7 @@
 					<object class="NSTextField" id="243932129">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{17, 167}, {120, 17}}</string>
+						<string key="NSFrame">{{45, 166}, {113, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="1004027822">
@@ -742,17 +742,17 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<reference key="object" ref="1005"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="397893156"/>
 							<reference ref="185811477"/>
-							<reference ref="243932129"/>
 							<reference ref="457370696"/>
 							<reference ref="650040696"/>
-							<reference ref="946477093"/>
 							<reference ref="311240597"/>
 							<reference ref="34816098"/>
-							<reference ref="785644818"/>
 							<reference ref="718291369"/>
 							<reference ref="422292381"/>
+							<reference ref="785644818"/>
+							<reference ref="946477093"/>
+							<reference ref="243932129"/>
+							<reference ref="397893156"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1059,7 +1059,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{932, 578}, {383, 250}}</string>
+					<string>{{694, 552}, {383, 250}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
