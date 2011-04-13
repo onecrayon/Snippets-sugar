@@ -6,7 +6,7 @@ This is awesome because it allows you to easily insert snippets from Snippets.ap
 
 ## Installation
 
-To install, download the latest version, unzip it, and double click it. If you have previously installed the Snippets.sugar, you may need to delete the old copy first; it lives here:
+To install, [download the latest version](https://github.com/downloads/onecrayon/Snippets-sugar/Snippets.sugar.zip), unzip it, and double click it. If you have previously installed the Snippets.sugar, you may need to delete the old copy first; it lives here:
 
     ~/Library/Application Support/Espresso/Sugars/Snippets.sugar
 
