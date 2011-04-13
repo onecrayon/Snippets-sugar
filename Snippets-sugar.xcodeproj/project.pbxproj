@@ -190,7 +190,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "Snippets-sugar" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 089C166AFE841209C02AAC07 /* Snippets-sugar */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -270,7 +277,6 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				PRODUCT_NAME = Snippets;
-				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = sugar;
 			};
 			name = Debug;
@@ -284,9 +290,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Code/Snippets-sugar_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				PRODUCT_NAME = Snippets;
-				SDKROOT = macosx10.5;
 				WRAPPER_EXTENSION = sugar;
 			};
 			name = Release;
@@ -295,7 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_PATH = /Applications/Espresso.app;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				BUNDLE_LOADER = "$(APPLICATION_PATH)/Contents/MacOS/Espresso";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -306,6 +310,7 @@
 				OTHER_LDFLAGS = "-licucore";
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};

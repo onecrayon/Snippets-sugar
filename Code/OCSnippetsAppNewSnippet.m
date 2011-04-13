@@ -48,11 +48,11 @@ typedef enum {
 	OCSnippetsLicense license = [defaults integerForKey:@"SnippetsAppDefaultLicense"];
 	
 	// Create our basic addition URL using the current selection
-	NSMutableString *url = [NSMutableString stringWithFormat:@"snippet:add?code=%@", [selection stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+	NSMutableString *url = [NSMutableString stringWithFormat:@"snippet:add?code=%@", CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)selection, NULL, CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8)];
 	
 	// Add the author, if one exists
 	if (![author isEqualToString:@""]) {
-		[url appendFormat:@"&amp;author=%@", [author stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+		[url appendFormat:@"&amp;author=%@", CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)author, NULL, CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8)];
 	}
 	
 	// Add the license, if one exists
@@ -73,7 +73,7 @@ typedef enum {
 		}
 	}
 	
-	// Figure out the highlighting of the file (currently only detecting built-in Sugars
+	// Figure out the highlighting of the file (currently only detecting built-in Sugars)
 	// TODO: Improve the intelligence of this? String matching is a TERRIBLE way to do it; much better to do actual selector comparisons
 	SXTypeIdentifier *rootZoneIdentifier = [[[context syntaxTree] rootZone] typeIdentifier];
 	if (rootZoneIdentifier) {
