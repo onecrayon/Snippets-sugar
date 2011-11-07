@@ -139,7 +139,7 @@ typedef enum {
 		// Get our first selection
 		NSRange selection = [[[[self actionContext] selectedRanges] objectAtIndex:0] rangeValue];
 		CETextRecipe *recipe = [CETextRecipe textRecipe];
-		[recipe addReplacementString:snippet forRange:selection];
+		[recipe replaceRange:selection withString:snippet];
 		// Only apply the recipe if it's going to result in a change
 		[recipe prepare];
 		if ([recipe numberOfChanges] > 0) {
